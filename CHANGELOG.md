@@ -5,6 +5,26 @@ All notable changes to this marketplace will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [1.1.0] - 2025-12-25
+
+### Added
+
+- update to v0.2.0 with multi-provider auth (#10)
+- add comprehensive code quality enforcement
+- add MkDocs Material documentation with dynamic plugin page generation
+- align with Anthropic marketplace best practices
+
+### Fixed
+
+- use local path for plugin source instead of external GitHub
+- Use peaceiris/actions-gh-pages for branch-based deployment
+- Release workflow uses PR-based approach for branch protection compliance
+
+### Changed
+
+- update f5xc-chrome submodule for cleaner command path
+
 ## [1.0.0] - 2024-12-24
 
 ### Added
