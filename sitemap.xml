@@ -13,6 +13,10 @@
          <lastmod>2025-12-25</lastmod>
     </url>
     <url>
+         <loc>https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/plugin-automation/</loc>
+         <lastmod>2025-12-25</lastmod>
+    </url>
+    <url>
          <loc>https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/roadmap/</loc>
          <lastmod>2025-12-25</lastmod>
     </url>
@@ -25,7 +29,7 @@
          <lastmod>2025-12-25</lastmod>
     </url>
     <url>
-         <loc>https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/plugins/f5xc-chrome/</loc>
+         <loc>https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/plugins/f5xc-console/</loc>
          <lastmod>2025-12-25</lastmod>
     </url>
 </urlset>
