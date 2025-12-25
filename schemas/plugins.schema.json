@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/schemas/plugins.schema.json",
+  "title": "Plugin Registry Schema",
+  "description": "JSON Schema for plugin registry with GitHub and npm support",
+  "type": "object",
+  "required": ["version", "registry", "plugins"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Registry schema version"
+    },
+    "registry": {
+      "type": "object",
+      "required": ["name", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "homepage": { "type": "string", "format": "uri" }
+      }
+    },
+    "plugins": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/plugin"
+      }
+    }
+  },
+  "definitions": {
+    "plugin": {
+      "type": "object",
+      "required": ["name", "description", "latest", "versions"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Plugin command name"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10
+        },
+        "source": {
+          "type": "string",
+          "enum": ["github", "npm"],
+          "default": "github",
+          "description": "Package source type"
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "description": "Source repository URL"
+        },
+        "npm": {
+          "type": "object",
+          "description": "npm-specific configuration",
+          "required": ["package"],
+          "additionalProperties": false,
+          "properties": {
+            "package": {
+              "type": "string",
+              "pattern": "^(@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$",
+              "description": "npm package name (with optional scope)"
+            },
+            "registry": {
+              "type": "string",
+              "format": "uri",
+              "default": "https://registry.npmjs.org",
+              "description": "npm registry URL"
+            }
+          }
+        },
+        "latest": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$"
+        },
+        "versions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/version"
+          }
+        },
+        "author": {
+          "$ref": "#/definitions/author"
+        },
+        "license": { "type": "string" },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "category": {
+          "type": "string",
+          "enum": ["automation", "productivity", "development", "testing", "infrastructure", "security", "other"]
+        }
+      },
+      "if": {
+        "properties": { "source": { "const": "npm" } }
+      },
+      "then": {
+        "required": ["npm"]
+      }
+    },
+    "version": {
+      "type": "object",
+      "required": ["tarball"],
+      "additionalProperties": false,
+      "properties": {
+        "tarball": {
+          "type": "string",
+          "format": "uri",
+          "description": "Tarball download URL"
+        },
+        "sha256": {
+          "type": "string",
+          "description": "SHA256 hash for GitHub tarballs"
+        },
+        "integrity": {
+          "type": "string",
+          "pattern": "^sha512-[A-Za-z0-9+/=]+$",
+          "description": "npm integrity hash (sha512)"
+        },
+        "released": {
+          "type": "string",
+          "format": "date"
+        },
+        "changelog": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "author": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

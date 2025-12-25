@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "f5-distributed-cloud",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "F5 Distributed Cloud automation plugins for network engineers and DevOps teams",
   "license": "MIT",
   "homepage": "https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace",
@@ -13,17 +13,19 @@
   "registry": "../plugins.json",
   "plugins": [
     {
-      "name": "f5xc-chrome",
+      "name": "f5xc-console",
       "description": "Chrome browser automation for F5 XC console - navigate, crawl, and automate GUI operations",
-      "version": "0.6.0",
+      "version": "0.10.1",
       "author": {
         "name": "Robin Mordasiewicz",
         "url": "https://github.com/robinmordasiewicz"
       },
-      "source": "./plugins/f5xc-chrome",
+      "source": "./plugins/f5xc-console",
       "registry": {
-        "repository": "https://github.com/robinmordasiewicz/f5xc-chrome",
-        "tarball": "https://github.com/robinmordasiewicz/f5xc-chrome/archive/refs/tags/v0.6.0.tar.gz"
+        "type": "npm",
+        "package": "@robinmordasiewicz/f5xc-console",
+        "repository": "https://github.com/robinmordasiewicz/f5xc-console",
+        "tarball": "https://registry.npmjs.org/@robinmordasiewicz/f5xc-console/-/f5xc-console-0.10.1.tgz"
       },
       "category": "automation",
       "tags": [

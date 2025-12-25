@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 #
 # Plugin Manager for F5 Distributed Cloud Marketplace
-# Registry-based plugin installation without git submodules
+# Registry-based plugin installation with GitHub and npm support
 #
 # Usage:
 #   ./scripts/plugin-manager.sh install <plugin-name> [version]
 #   ./scripts/plugin-manager.sh update <plugin-name>
 #   ./scripts/plugin-manager.sh list
 #   ./scripts/plugin-manager.sh sync
+#   ./scripts/plugin-manager.sh npm-info <plugin-name>
 #
 
 set -euo pipefail
@@ -55,13 +56,74 @@ get_version_info() {
     jq -r ".plugins[\"$plugin_name\"].versions[\"$version\"].$field // empty" "$PLUGINS_JSON"
 }
 
+# Detect source type for a plugin (github or npm)
+get_source_type() {
+    local plugin_name="$1"
+    local source=$(jq -r ".plugins[\"$plugin_name\"].source // \"github\"" "$PLUGINS_JSON")
+    echo "$source"
+}
+
+# Get npm-specific config
+get_npm_info() {
+    local plugin_name="$1"
+    local field="$2"
+    jq -r ".plugins[\"$plugin_name\"].npm.$field // empty" "$PLUGINS_JSON"
+}
+
+# URL encode a string (for scoped packages like @org/package)
+url_encode() {
+    local string="$1"
+    printf '%s' "$string" | sed 's/@/%40/g; s/\//%2F/g'
+}
+
+# Fetch npm package metadata from registry
+fetch_npm_metadata() {
+    local package_name="$1"
+    local registry="${2:-https://registry.npmjs.org}"
+    local encoded_package=$(url_encode "$package_name")
+    local auth_header=""
+
+    # Support NPM_TOKEN for private packages
+    if [[ -n "${NPM_TOKEN:-}" ]]; then
+        curl -sL -H "Authorization: Bearer $NPM_TOKEN" "$registry/$encoded_package"
+    else
+        curl -sL "$registry/$encoded_package"
+    fi
+}
+
+# Get latest version from npm registry
+get_npm_latest_version() {
+    local package_name="$1"
+    local registry="${2:-https://registry.npmjs.org}"
+    local metadata=$(fetch_npm_metadata "$package_name" "$registry")
+    echo "$metadata" | jq -r '.["dist-tags"].latest // empty'
+}
+
+# Get tarball URL from npm registry for a specific version
+get_npm_tarball_url() {
+    local package_name="$1"
+    local version="$2"
+    local registry="${3:-https://registry.npmjs.org}"
+    local metadata=$(fetch_npm_metadata "$package_name" "$registry")
+    echo "$metadata" | jq -r ".versions[\"$version\"].dist.tarball // empty"
+}
+
+# Get integrity hash from npm registry
+get_npm_integrity() {
+    local package_name="$1"
+    local version="$2"
+    local registry="${3:-https://registry.npmjs.org}"
+    local metadata=$(fetch_npm_metadata "$package_name" "$registry")
+    echo "$metadata" | jq -r ".versions[\"$version\"].dist.integrity // empty"
+}
+
 # List all available plugins
 cmd_list() {
     log_info "Available plugins in registry:"
     echo ""
-    jq -r '.plugins | to_entries[] | "\(.key)\t\(.value.latest)\t\(.value.description)"' "$PLUGINS_JSON" | \
-        while IFS=$'\t' read -r name version desc; do
-            printf "  ${GREEN}%-20s${NC} ${YELLOW}v%-10s${NC} %s\n" "$name" "$version" "$desc"
+    jq -r '.plugins | to_entries[] | "\(.key)\t\(.value.source // "github")\t\(.value.latest)\t\(.value.description)"' "$PLUGINS_JSON" | \
+        while IFS=$'\t' read -r name source version desc; do
+            printf "  ${GREEN}%-20s${NC} ${BLUE}%-8s${NC} ${YELLOW}v%-10s${NC} %s\n" "$name" "[$source]" "$version" "$desc"
         done
     echo ""
 
@@ -80,15 +142,10 @@ cmd_list() {
     fi
 }
 
-# Install a plugin
-cmd_install() {
+# Install from GitHub tarball
+install_from_github() {
     local plugin_name="$1"
-    local version="${2:-$(get_plugin_info "$plugin_name" "latest")}"
-
-    if [[ -z "$version" ]]; then
-        log_error "Plugin not found: $plugin_name"
-        exit 1
-    fi
+    local version="$2"
 
     local tarball_url=$(get_version_info "$plugin_name" "$version" "tarball")
     if [[ -z "$tarball_url" ]]; then
@@ -99,7 +156,7 @@ cmd_install() {
     local plugin_dir="$PLUGINS_DIR/$plugin_name"
     local cache_plugin_dir="$CACHE_DIR/f5-distributed-cloud/$plugin_name/$version"
 
-    log_info "Installing $plugin_name@$version..."
+    log_info "Installing $plugin_name@$version from GitHub..."
 
     # Create temp directory
     local tmp_dir=$(mktemp -d)
@@ -108,6 +165,18 @@ cmd_install() {
     # Download tarball
     log_info "Downloading from $tarball_url"
     curl -sL "$tarball_url" -o "$tmp_dir/plugin.tar.gz"
+
+    # Verify SHA256 if available
+    local expected_sha256=$(get_version_info "$plugin_name" "$version" "sha256")
+    if [[ -n "$expected_sha256" ]]; then
+        log_info "Verifying checksum..."
+        local actual_sha256=$(shasum -a 256 "$tmp_dir/plugin.tar.gz" | cut -d' ' -f1)
+        if [[ "$actual_sha256" != "$expected_sha256" ]]; then
+            log_error "Checksum verification failed!"
+            exit 1
+        fi
+        log_success "Checksum verified"
+    fi
 
     # Extract
     log_info "Extracting..."
@@ -132,6 +201,111 @@ cmd_install() {
 
     log_success "Installed $plugin_name@$version to $plugin_dir"
     log_success "Cached at $cache_plugin_dir"
+}
+
+# Install from npm registry
+install_from_npm() {
+    local plugin_name="$1"
+    local version="$2"
+    local package_name=$(get_npm_info "$plugin_name" "package")
+    local registry=$(get_npm_info "$plugin_name" "registry")
+    registry="${registry:-https://registry.npmjs.org}"
+
+    local tarball_url=$(get_version_info "$plugin_name" "$version" "tarball")
+
+    # If tarball not in plugins.json, fetch from npm registry
+    if [[ -z "$tarball_url" ]]; then
+        log_info "Fetching tarball URL from npm registry..."
+        tarball_url=$(get_npm_tarball_url "$package_name" "$version" "$registry")
+    fi
+
+    if [[ -z "$tarball_url" ]]; then
+        log_error "Could not find tarball for $package_name@$version"
+        exit 1
+    fi
+
+    local plugin_dir="$PLUGINS_DIR/$plugin_name"
+    local cache_plugin_dir="$CACHE_DIR/f5-distributed-cloud/$plugin_name/$version"
+
+    log_info "Installing $plugin_name@$version from npm..."
+
+    # Create temp directory
+    local tmp_dir=$(mktemp -d)
+    trap "rm -rf $tmp_dir" EXIT
+
+    # Download tarball (with auth if NPM_TOKEN is set)
+    log_info "Downloading from $tarball_url"
+    if [[ -n "${NPM_TOKEN:-}" ]]; then
+        curl -sL -H "Authorization: Bearer $NPM_TOKEN" "$tarball_url" -o "$tmp_dir/plugin.tgz"
+    else
+        curl -sL "$tarball_url" -o "$tmp_dir/plugin.tgz"
+    fi
+
+    # Verify integrity if available
+    local expected_integrity=$(get_version_info "$plugin_name" "$version" "integrity")
+    if [[ -n "$expected_integrity" ]]; then
+        log_info "Verifying package integrity..."
+        local actual_hash=$(openssl dgst -sha512 -binary "$tmp_dir/plugin.tgz" | base64 | tr -d '\n')
+        local expected_hash="${expected_integrity#sha512-}"
+        if [[ "$actual_hash" != "$expected_hash" ]]; then
+            log_error "Integrity check failed!"
+            log_error "Expected: $expected_hash"
+            log_error "Actual: $actual_hash"
+            exit 1
+        fi
+        log_success "Integrity verified"
+    fi
+
+    # Extract (npm tarballs have 'package/' prefix)
+    log_info "Extracting..."
+    mkdir -p "$tmp_dir/extracted"
+    tar -xzf "$tmp_dir/plugin.tgz" -C "$tmp_dir/extracted"
+
+    # npm tarballs extract to 'package/' directory
+    local extracted_dir="$tmp_dir/extracted/package"
+    if [[ ! -d "$extracted_dir" ]]; then
+        # Fallback: find first directory
+        extracted_dir=$(find "$tmp_dir/extracted" -mindepth 1 -maxdepth 1 -type d | head -1)
+    fi
+
+    # Remove old installation
+    [[ -d "$plugin_dir" ]] && rm -rf "$plugin_dir"
+
+    # Move to plugins directory
+    mkdir -p "$PLUGINS_DIR"
+    mv "$extracted_dir" "$plugin_dir"
+
+    # Write version file
+    echo "$version" > "$plugin_dir/.version"
+
+    # Also update cache for Claude Code
+    mkdir -p "$cache_plugin_dir"
+    cp -r "$plugin_dir/"* "$cache_plugin_dir/"
+
+    log_success "Installed $plugin_name@$version to $plugin_dir"
+    log_success "Cached at $cache_plugin_dir"
+}
+
+# Install a plugin (routes to appropriate source)
+cmd_install() {
+    local plugin_name="$1"
+    local version="${2:-$(get_plugin_info "$plugin_name" "latest")}"
+
+    if [[ -z "$version" ]]; then
+        log_error "Plugin not found: $plugin_name"
+        exit 1
+    fi
+
+    local source_type=$(get_source_type "$plugin_name")
+
+    case "$source_type" in
+        npm)
+            install_from_npm "$plugin_name" "$version"
+            ;;
+        github|*)
+            install_from_github "$plugin_name" "$version"
+            ;;
+    esac
 }
 
 # Update a plugin to latest
@@ -168,6 +342,58 @@ cmd_sync() {
     done
 
     log_success "All plugins synced"
+}
+
+# Show npm package info from registry
+cmd_npm_info() {
+    local plugin_name="$1"
+
+    local source_type=$(get_source_type "$plugin_name")
+    if [[ "$source_type" != "npm" ]]; then
+        log_error "$plugin_name is not an npm package (source: $source_type)"
+        exit 1
+    fi
+
+    local package_name=$(get_npm_info "$plugin_name" "package")
+    local registry=$(get_npm_info "$plugin_name" "registry")
+    registry="${registry:-https://registry.npmjs.org}"
+
+    log_info "Fetching metadata for $package_name from $registry..."
+
+    local metadata=$(fetch_npm_metadata "$package_name" "$registry")
+
+    if [[ -z "$metadata" ]] || [[ "$metadata" == "null" ]]; then
+        log_error "Could not fetch metadata for $package_name"
+        exit 1
+    fi
+
+    local latest=$(echo "$metadata" | jq -r '.["dist-tags"].latest // empty')
+    local tarball=$(echo "$metadata" | jq -r ".versions[\"$latest\"].dist.tarball // empty")
+    local integrity=$(echo "$metadata" | jq -r ".versions[\"$latest\"].dist.integrity // empty")
+    local released=$(echo "$metadata" | jq -r ".time[\"$latest\"] // empty" | cut -dT -f1)
+
+    echo ""
+    log_success "Package: $package_name"
+    log_success "Latest version: $latest"
+    log_info "Tarball: $tarball"
+    log_info "Integrity: $integrity"
+    log_info "Released: $released"
+    echo ""
+    log_info "Available versions:"
+    echo "$metadata" | jq -r '.versions | keys | reverse | .[:10][]' | while read -r ver; do
+        printf "  - %s\n" "$ver"
+    done
+    echo ""
+    log_info "Add to plugins.json versions:"
+    echo ""
+    cat << EOF
+"$latest": {
+  "tarball": "$tarball",
+  "integrity": "$integrity",
+  "released": "$released",
+  "changelog": "https://github.com/robinmordasiewicz/f5xc-console/releases/tag/v$latest"
+}
+EOF
 }
 
 # Update Claude Code installed_plugins.json
@@ -226,6 +452,10 @@ main() {
         sync)
             cmd_sync
             ;;
+        npm-info)
+            [[ $# -lt 1 ]] && { log_error "Usage: $0 npm-info <plugin-name>"; exit 1; }
+            cmd_npm_info "$@"
+            ;;
         help|--help|-h)
             echo "Plugin Manager for F5 Distributed Cloud Marketplace"
             echo ""
@@ -234,6 +464,11 @@ main() {
             echo "  $0 update <plugin-name>             Update plugin to latest"
             echo "  $0 list                             List available/installed plugins"
             echo "  $0 sync                             Sync all plugins to latest"
+            echo "  $0 npm-info <plugin-name>           Show npm package info"
+            echo ""
+            echo "Environment variables:"
+            echo "  NPM_TOKEN                           Bearer token for private npm packages"
+            echo "  CLAUDE_PLUGINS_CACHE               Custom cache directory (default: ~/.claude/plugins/cache)"
             echo ""
             ;;
         *)

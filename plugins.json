@@ -1,29 +1,40 @@
 {
   "$schema": "./schemas/plugins.schema.json",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "registry": {
     "name": "f5-distributed-cloud",
     "description": "F5 Distributed Cloud plugin registry",
     "homepage": "https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace"
   },
   "plugins": {
-    "f5xc-chrome": {
+    "f5xc-console": {
       "name": "xc",
       "description": "Chrome browser automation for F5 Distributed Cloud console",
-      "repository": "https://github.com/robinmordasiewicz/f5xc-chrome",
-      "latest": "0.6.0",
+      "source": "npm",
+      "npm": {
+        "package": "@robinmordasiewicz/f5xc-console",
+        "registry": "https://registry.npmjs.org"
+      },
+      "repository": "https://github.com/robinmordasiewicz/f5xc-console",
+      "latest": "0.10.1",
       "versions": {
-        "0.6.0": {
-          "tarball": "https://github.com/robinmordasiewicz/f5xc-chrome/archive/refs/tags/v0.6.0.tar.gz",
-          "sha256": "",
+        "0.10.1": {
+          "tarball": "https://registry.npmjs.org/@robinmordasiewicz/f5xc-console/-/f5xc-console-0.10.1.tgz",
+          "integrity": "sha512-+yxgR0rwaQVpsZzoNXr1hNrR8E9msyA6/2A6XdgIZMHHPxPMNFOGG3FGVPjViymeGsgNAe5X8Vj7ReIoK9mZVw==",
           "released": "2025-12-25",
-          "changelog": "https://github.com/robinmordasiewicz/f5xc-chrome/releases/tag/v0.6.0"
+          "changelog": "https://github.com/robinmordasiewicz/f5xc-console/releases/tag/v0.10.1"
         },
-        "0.3.0": {
-          "tarball": "https://github.com/robinmordasiewicz/f5xc-chrome/archive/refs/tags/v0.3.0.tar.gz",
-          "sha256": "",
-          "released": "2025-12-24",
-          "changelog": "https://github.com/robinmordasiewicz/f5xc-chrome/releases/tag/v0.3.0"
+        "0.9.0": {
+          "tarball": "https://registry.npmjs.org/@robinmordasiewicz/f5xc-console/-/f5xc-console-0.9.0.tgz",
+          "integrity": "sha512-sOhloRvD87/Jbb2Cg/HmFJi2BcJSQRZ8FSmezBLnsrIAC3NKEa95ZW9GCgBFX9LAQDeXbYywdpO2FP3j3+uoYg==",
+          "released": "2025-12-25",
+          "changelog": "https://github.com/robinmordasiewicz/f5xc-console/releases/tag/v0.9.0"
+        },
+        "0.6.0": {
+          "tarball": "https://registry.npmjs.org/@robinmordasiewicz/f5xc-console/-/f5xc-console-0.6.0.tgz",
+          "integrity": "sha512-q+SBhlYhjYmdNPs2ij6cVcD1j1SOInPSUaPC5hk6MbuW4dKqmfKe5xzsceNSHMu592Ujzc/aeN9Ro4ln2X+DKw==",
+          "released": "2025-12-25",
+          "changelog": "https://github.com/robinmordasiewicz/f5xc-console/releases/tag/v0.6.0"
         }
       },
       "author": {
@@ -31,7 +42,7 @@
         "url": "https://github.com/robinmordasiewicz"
       },
       "license": "MIT",
-      "keywords": ["f5", "xc", "distributed-cloud", "chrome", "console", "automation"],
+      "keywords": ["claude-code", "claude-plugin", "f5", "xc", "distributed-cloud", "chrome", "console", "automation"],
       "category": "automation"
     }
   }

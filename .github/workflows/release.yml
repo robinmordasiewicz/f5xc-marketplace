@@ -283,7 +283,7 @@ jobs:
             echo '/plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace'
             echo ''
             echo '# Install plugins'
-            echo '/plugin install f5xc-chrome'
+            echo '/plugin install f5xc-console'
             echo '```'
             echo ""
             REPO_URL="https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace"

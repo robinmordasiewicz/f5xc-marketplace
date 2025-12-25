@@ -9,7 +9,7 @@ Priorities may shift based on community feedback and contributions.
 
 | Plugin | Version | Description |
 |--------|---------|-------------|
-| f5xc-chrome | 0.1.0 | Browser automation for F5 XC console |
+| f5xc-console | 0.10.1 | Browser automation for F5 XC console |
 
 ## Planned Plugins
 
