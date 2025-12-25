@@ -63,6 +63,10 @@
         }
       }
     },
+    "registry": {
+      "type": "string",
+      "description": "Path to plugins.json registry file"
+    },
     "metadata": {
       "type": "object",
       "additionalProperties": true,
