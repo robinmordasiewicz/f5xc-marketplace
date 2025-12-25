@@ -37,14 +37,14 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 
     ```bash
     # Verify you can reach GitHub
-    curl -I https://github.com/robinmordasiewicz/f5xc-chrome
+    curl -I https://github.com/robinmordasiewicz/f5xc-console
     ```
 
 === "Direct Install"
 
     ```bash
     # Try direct installation instead of marketplace
-    /plugin install robinmordasiewicz/f5xc-chrome
+    /plugin install robinmordasiewicz/f5xc-console
     ```
 
 === "Update Claude Code"
@@ -260,6 +260,6 @@ When reporting issues, include:
 ??? question "How do I update plugins?"
 
     ```bash
-    /plugin update f5xc-chrome
+    /plugin update f5xc-console
     ```
     Or reinstall to get the latest version.

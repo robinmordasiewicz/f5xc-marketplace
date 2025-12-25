@@ -17,7 +17,7 @@ Or visit [claude.com/claude-code](https://claude.com/claude-code) for installati
 
 ### 2. Install Claude in Chrome Extension
 
-For browser automation plugins (like `f5xc-chrome`), you need the Claude in Chrome extension:
+For browser automation plugins (like `f5xc-console`), you need the Claude in Chrome extension:
 
 1. Open Chrome Web Store
 2. Search for "Claude in Chrome"
@@ -61,13 +61,13 @@ This shows all plugins from configured marketplaces.
 === "From Marketplace"
 
     ```
-    /plugin install f5xc-chrome
+    /plugin install f5xc-console
     ```
 
 === "Direct from GitHub"
 
     ```
-    /plugin install robinmordasiewicz/f5xc-chrome
+    /plugin install robinmordasiewicz/f5xc-console
     ```
 
 ### Verify Installation
@@ -78,9 +78,9 @@ This shows all plugins from configured marketplaces.
 
 ## Using Plugins
 
-### f5xc-chrome Plugin
+### f5xc-console Plugin
 
-The `f5xc-chrome` plugin provides browser automation for the F5 XC console.
+The `f5xc-console` plugin provides browser automation for the F5 XC console.
 
 #### Login to F5 XC Console
 

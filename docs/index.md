@@ -13,7 +13,7 @@ network engineers, DevOps teams, and platform engineers working with F5 Distribu
     /plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace
 
     # Install a plugin
-    /plugin install f5xc-chrome
+    /plugin install f5xc-console
     ```
 
 ## Key Features
@@ -50,7 +50,7 @@ network engineers, DevOps teams, and platform engineers working with F5 Distribu
 
 | Plugin | Description | Status |
 |--------|-------------|--------|
-| [f5xc-chrome](plugins/f5xc-chrome.md) | Browser automation for F5 XC console | :material-check-circle:{ .green } Available |
+| [f5xc-console](plugins/f5xc-console.md) | Browser automation for F5 XC console | :material-check-circle:{ .green } Available |
 | f5xc-cli | CLI operations and scripting | :material-clock-outline: Planned |
 | f5xc-terraform | Infrastructure as Code integration | :material-clock-outline: Planned |
 | f5xc-docs | Documentation and API lookup | :material-clock-outline: Planned |

@@ -14,7 +14,7 @@ A curated collection of Claude Code plugins for automating F5 Distributed Cloud 
 /plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace
 
 # 2. Install a plugin
-/plugin install f5xc-chrome
+/plugin install f5xc-console
 
 # 3. Use the commands
 /xc:console login https://your-tenant.console.ves.volterra.io
@@ -33,7 +33,7 @@ A curated collection of Claude Code plugins for automating F5 Distributed Cloud 
 
 | Plugin | Description | Status |
 |--------|-------------|--------|
-| [f5xc-chrome](https://github.com/robinmordasiewicz/f5xc-chrome) | Browser automation for F5 XC console | Available |
+| [f5xc-console](https://github.com/robinmordasiewicz/f5xc-console) | Browser automation for F5 XC console | Available |
 
 ## Prerequisites
 

@@ -7,8 +7,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [3.0.0] - 2025-12-25
 
-## [2.0.0] - 2025-12-25
+### Added
+
+- **npm registry integration**: Plugins can now be sourced from npm registry
+- Added `npm-info` command to plugin-manager.sh for fetching npm package metadata
+- Added `schemas/plugins.schema.json` with npm source support
+- Support for npm integrity hash (sha512) verification
+- NPM_TOKEN environment variable support for private packages
+- Scoped package support (@org/package format)
+- **Automated plugin sync**: New workflow for automatic version updates
+- Added `plugin-sync.yml` workflow with repository_dispatch support
+- Added `sync-npm-plugins.sh` script for fetching latest versions
+- Scheduled sync every 6 hours as fallback
+- Documentation for webhook dispatch setup
+
+### Changed
+
+- **BREAKING**: Renamed plugin from `f5xc-chrome` to `f5xc-console`
+- Plugin source changed from GitHub tarballs to npm registry
+- Plugin now published as `@robinmordasiewicz/f5xc-console` on npmjs.org
+- Updated plugin-manager.sh with source type routing (github/npm)
+- Enhanced `list` command to show source type for each plugin
+
+### Migration Guide
+
+To migrate from 2.x to 3.0:
+```bash
+# Remove old plugin installation
+rm -rf plugins/f5xc-chrome
+
+# Install new npm-based plugin
+./scripts/plugin-manager.sh install f5xc-console
+```
+
+### Webhook Setup for Plugin Repos
+
+Add to your plugin's release workflow:
+```yaml
+- name: Notify marketplace
+  uses: peter-evans/repository-dispatch@v3
+  with:
+    token: ${{ secrets.MARKETPLACE_DISPATCH_TOKEN }}
+    repository: robinmordasiewicz/f5-distributed-cloud-marketplace
+    event-type: plugin-release
+    client-payload: '{"plugin": "f5xc-console", "version": "${{ env.VERSION }}"}'
+```
 
 ## [2.0.0] - 2025-12-25
 
