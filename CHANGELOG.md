@@ -5,16 +5,6 @@ All notable changes to this marketplace will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
-
-
-## [3.0.0] - 2025-12-25
-
-### Fixed
-
-- remove non-standard registry property and fix markdown line length
-- add registry property to marketplace schema
-
 ## [3.0.0] - 2025-12-25
 
 ### Added
@@ -42,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Migration Guide
 
 To migrate from 2.x to 3.0:
+
 ```bash
 # Remove old plugin installation
 rm -rf plugins/f5xc-chrome
@@ -53,6 +44,7 @@ rm -rf plugins/f5xc-chrome
 ### Webhook Setup for Plugin Repos
 
 Add to your plugin's release workflow:
+
 ```yaml
 - name: Notify marketplace
   uses: peter-evans/repository-dispatch@v3
@@ -87,6 +79,7 @@ Add to your plugin's release workflow:
 ### Migration Guide
 
 To migrate from 1.x to 2.0:
+
 ```bash
 # Remove old submodule if present
 git submodule deinit -f plugins/f5xc-chrome
