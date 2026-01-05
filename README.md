@@ -1,8 +1,8 @@
 # F5 Distributed Cloud Plugin Marketplace
 
-[![Validate Marketplace](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/actions/workflows/validate.yml/badge.svg)](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/actions/workflows/validate.yml)
-[![Release](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/actions/workflows/release.yml/badge.svg)](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/actions/workflows/release.yml)
-[![Documentation](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/actions/workflows/docs.yml/badge.svg)](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/actions/workflows/docs.yml)
+[![Validate Marketplace](https://github.com/robinmordasiewicz/f5xc-marketplace/actions/workflows/validate.yml/badge.svg)](https://github.com/robinmordasiewicz/f5xc-marketplace/actions/workflows/validate.yml)
+[![Release](https://github.com/robinmordasiewicz/f5xc-marketplace/actions/workflows/release.yml/badge.svg)](https://github.com/robinmordasiewicz/f5xc-marketplace/actions/workflows/release.yml)
+[![Documentation](https://github.com/robinmordasiewicz/f5xc-marketplace/actions/workflows/docs.yml/badge.svg)](https://github.com/robinmordasiewicz/f5xc-marketplace/actions/workflows/docs.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A curated collection of Claude Code plugins for automating F5 Distributed Cloud (XC) operations.
@@ -11,7 +11,7 @@ A curated collection of Claude Code plugins for automating F5 Distributed Cloud 
 
 ```bash
 # 1. Add this marketplace (one time)
-/plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace
+/plugin marketplace add robinmordasiewicz/f5xc-marketplace
 
 # 2. Install a plugin
 /plugin install f5xc-console
@@ -22,12 +22,12 @@ A curated collection of Claude Code plugins for automating F5 Distributed Cloud 
 
 ## Documentation
 
-**[View Full Documentation](https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/)**
+**[View Full Documentation](https://robinmordasiewicz.github.io/f5xc-marketplace/)**
 
-- [Getting Started](https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/getting-started/)
-- [Available Plugins](https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/plugins/)
-- [Contributing](https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/contributing/)
-- [Troubleshooting](https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/troubleshooting/)
+- [Getting Started](https://robinmordasiewicz.github.io/f5xc-marketplace/getting-started/)
+- [Available Plugins](https://robinmordasiewicz.github.io/f5xc-marketplace/plugins/)
+- [Contributing](https://robinmordasiewicz.github.io/f5xc-marketplace/contributing/)
+- [Troubleshooting](https://robinmordasiewicz.github.io/f5xc-marketplace/troubleshooting/)
 
 ## Available Plugins
 

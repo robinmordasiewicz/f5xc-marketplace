@@ -520,7 +520,7 @@ def generate_index_page(plugins: list[ProcessedPlugin], marketplace: Marketplace
             "",
             "```bash",
             "# Add this marketplace",
-            "/plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace",
+            "/plugin marketplace add robinmordasiewicz/f5xc-marketplace",
             "",
             "# Install any plugin",
             "/plugin install <plugin-name>",

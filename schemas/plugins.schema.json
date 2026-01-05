@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/schemas/plugins.schema.json",
+  "$id": "https://robinmordasiewicz.github.io/f5xc-marketplace/schemas/plugins.schema.json",
   "title": "Plugin Registry Schema",
   "description": "JSON Schema for plugin registry with GitHub and npm support",
   "type": "object",

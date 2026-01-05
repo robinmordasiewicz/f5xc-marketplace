@@ -107,7 +107,7 @@ natural language commands, and enterprise-grade security for network engineers a
 
     === "Step 1: Add Marketplace"
         ```bash
-        /plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace
+        /plugin marketplace add robinmordasiewicz/f5xc-marketplace
         ```
 
     === "Step 2: Install Plugin"
@@ -159,7 +159,7 @@ natural language commands, and enterprise-grade security for network engineers a
 
     Common issues and solutions for plugin and automation problems.
 
-- :material-github: [**GitHub Issues**](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/issues)
+- :material-github: [**GitHub Issues**](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
 
     Report bugs, request features, or ask questions.
 
@@ -176,6 +176,6 @@ natural language commands, and enterprise-grade security for network engineers a
 **Ready to automate your F5 Distributed Cloud workflows?**
 
 [Get Started :material-arrow-right:](getting-started.md){ .md-button .md-button--primary }
-[View on GitHub :material-github:](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace){ .md-button }
+[View on GitHub :material-github:](https://github.com/robinmordasiewicz/f5xc-marketplace){ .md-button }
 
 </div>

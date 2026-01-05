@@ -1,5 +1,5 @@
 [project]
-name = "f5-distributed-cloud-marketplace"
+name = "f5xc-marketplace"
 version = "0.1.0"
 description = "F5 Distributed Cloud Plugin Marketplace for Claude Code"
 requires-python = ">=3.12"

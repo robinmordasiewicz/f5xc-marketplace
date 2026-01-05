@@ -43,8 +43,8 @@ Your plugin repository must have a valid `.claude-plugin/plugin.json`:
 ### Step 2: Fork the Marketplace
 
 ```bash
-git clone https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace
-cd f5-distributed-cloud-marketplace
+git clone https://github.com/robinmordasiewicz/f5xc-marketplace
+cd f5xc-marketplace
 ```
 
 ### Step 3: Add Your Plugin Entry
@@ -148,8 +148,8 @@ git commit -m "feat!: redesign command interface"
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace
-cd f5-distributed-cloud-marketplace
+git clone https://github.com/robinmordasiewicz/f5xc-marketplace
+cd f5xc-marketplace
 ```
 
 ### Install Dependencies
@@ -193,7 +193,7 @@ python scripts/generate-plugin-docs.py
 
 ## Getting Help
 
-- :material-github: [Open an Issue](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/issues)
+- :material-github: [Open an Issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
 - :material-message: Start a Discussion
 
 ## License

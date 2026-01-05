@@ -31,13 +31,13 @@ Add this marketplace to your Claude Code installation:
 === "Interactive"
 
     ```
-    /plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace
+    /plugin marketplace add robinmordasiewicz/f5xc-marketplace
     ```
 
 === "CLI"
 
     ```bash
-    claude plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace
+    claude plugin marketplace add robinmordasiewicz/f5xc-marketplace
     ```
 
 Verify the marketplace is added:

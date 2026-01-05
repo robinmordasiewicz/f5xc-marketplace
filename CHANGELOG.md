@@ -120,7 +120,7 @@ Add to your plugin's release workflow:
   uses: peter-evans/repository-dispatch@v3
   with:
     token: ${{ secrets.MARKETPLACE_DISPATCH_TOKEN }}
-    repository: robinmordasiewicz/f5-distributed-cloud-marketplace
+    repository: robinmordasiewicz/f5xc-marketplace
     event-type: plugin-release
     client-payload: '{"plugin": "f5xc-console", "version": "${{ env.VERSION }}"}'
 ```

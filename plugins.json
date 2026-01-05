@@ -4,7 +4,7 @@
   "registry": {
     "name": "f5-distributed-cloud",
     "description": "F5 Distributed Cloud plugin registry",
-    "homepage": "https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace"
+    "homepage": "https://github.com/robinmordasiewicz/f5xc-marketplace"
   },
   "plugins": {
     "f5xc-console": {

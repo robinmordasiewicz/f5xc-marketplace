@@ -139,8 +139,8 @@ Migration tooling for onboarding.
 
 Have an idea for a new plugin or feature? We'd love to hear it!
 
-1. Check [existing issues](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/issues) for similar requests
-2. [Open a new issue](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/issues/new) with your proposal
+1. Check [existing issues](https://github.com/robinmordasiewicz/f5xc-marketplace/issues) for similar requests
+2. [Open a new issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues/new) with your proposal
 3. Include use cases and expected behavior
 
 ## Contributing
@@ -149,5 +149,5 @@ Want to help build these plugins? See our [Contributing Guide](contributing.md) 
 
 ## Version History
 
-See the [Changelog](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/blob/main/CHANGELOG.md)
+See the [Changelog](https://github.com/robinmordasiewicz/f5xc-marketplace/blob/main/CHANGELOG.md)
 for detailed release notes.
