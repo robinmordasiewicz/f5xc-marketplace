@@ -1,10 +1,10 @@
 site_name: F5 Distributed Cloud Plugin Marketplace
-site_url: https://robinmordasiewicz.github.io/f5-distributed-cloud-marketplace/
+site_url: https://robinmordasiewicz.github.io/f5xc-marketplace/
 site_description: A curated collection of Claude Code plugins for automating F5 Distributed Cloud operations
 site_author: Robin Mordasiewicz
 
-repo_name: robinmordasiewicz/f5-distributed-cloud-marketplace
-repo_url: https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace
+repo_name: robinmordasiewicz/f5xc-marketplace
+repo_url: https://github.com/robinmordasiewicz/f5xc-marketplace
 edit_uri: blob/gh-pages/docs/
 
 theme:
@@ -107,7 +107,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       repo_url_shorthand: true
       user: robinmordasiewicz
-      repo: f5-distributed-cloud-marketplace
+      repo: f5xc-marketplace
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets:

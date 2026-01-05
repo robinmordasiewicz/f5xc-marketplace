@@ -25,7 +25,7 @@ To enable automatic sync when your plugin publishes a new release, add this step
   uses: peter-evans/repository-dispatch@v3
   with:
     token: ${{ secrets.MARKETPLACE_DISPATCH_TOKEN }}
-    repository: robinmordasiewicz/f5-distributed-cloud-marketplace
+    repository: robinmordasiewicz/f5xc-marketplace
     event-type: plugin-release
     client-payload: |
       {
@@ -49,7 +49,7 @@ The plugin repository needs a Personal Access Token (PAT) with `repo` scope that
 For better security, use a fine-grained PAT:
 
 1. Create at https://github.com/settings/personal-access-tokens
-2. Repository access: Select `robinmordasiewicz/f5-distributed-cloud-marketplace`
+2. Repository access: Select `robinmordasiewicz/f5xc-marketplace`
 3. Permissions: Contents (read/write)
 4. Add as secret in your plugin repository
 

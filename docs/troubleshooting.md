@@ -16,7 +16,7 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 
 # Re-add if necessary
 /plugin marketplace remove f5-distributed-cloud
-/plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace
+/plugin marketplace add robinmordasiewicz/f5xc-marketplace
 ```
 
 ---
@@ -227,8 +227,8 @@ When reporting issues, include:
 
 ### Report an Issue
 
-1. Search [existing issues](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/issues)
-2. If not found, [create a new issue](https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace/issues/new)
+1. Search [existing issues](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
+2. If not found, [create a new issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues/new)
 3. Use the bug report template
 4. Include diagnostic information
 

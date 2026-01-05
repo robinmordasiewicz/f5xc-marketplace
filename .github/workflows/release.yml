@@ -287,13 +287,13 @@ jobs:
             echo ""
             echo '```bash'
             echo '# Add this marketplace to Claude Code'
-            echo '/plugin marketplace add robinmordasiewicz/f5-distributed-cloud-marketplace'
+            echo '/plugin marketplace add robinmordasiewicz/f5xc-marketplace'
             echo ''
             echo '# Install plugins'
             echo '/plugin install f5xc-console'
             echo '```'
             echo ""
-            REPO_URL="https://github.com/robinmordasiewicz/f5-distributed-cloud-marketplace"
+            REPO_URL="https://github.com/robinmordasiewicz/f5xc-marketplace"
             echo "**Full Changelog**: $REPO_URL/blob/main/CHANGELOG.md"
           } > release_notes.md
 
