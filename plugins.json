@@ -16,7 +16,7 @@
         "registry": "https://registry.npmjs.org"
       },
       "repository": "https://github.com/robinmordasiewicz/f5xc-console",
-      "latest": "0.10.1",
+      "latest": "0.14.2",
       "versions": {
         "0.10.1": {
           "tarball": "https://registry.npmjs.org/@robinmordasiewicz/f5xc-console/-/f5xc-console-0.10.1.tgz",
@@ -41,6 +41,12 @@
           "integrity": "null",
           "released": "null",
           "changelog": "https://github.com/robinmordasiewicz/f5xc-console/releases/tag/v0.13.0"
+        },
+        "0.14.2": {
+          "tarball": "null",
+          "integrity": "null",
+          "released": "null",
+          "changelog": "https://github.com/robinmordasiewicz/f5xc-console/releases/tag/v0.14.2"
         }
       },
       "author": {
