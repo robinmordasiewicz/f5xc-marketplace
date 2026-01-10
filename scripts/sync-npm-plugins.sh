@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Robin Mordasiewicz. MIT License.
+
 #
 # Sync plugins from npm registry
 # Updates plugins.json and marketplace.json with latest versions

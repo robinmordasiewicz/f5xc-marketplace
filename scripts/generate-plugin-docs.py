@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Robin Mordasiewicz. MIT License.
+
 """Generate plugin documentation from marketplace.json and plugin.json metadata.
 
 This script:

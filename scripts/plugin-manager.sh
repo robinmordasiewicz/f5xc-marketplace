@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Robin Mordasiewicz. MIT License.
+
 #
 # Plugin Manager for F5 Distributed Cloud Marketplace
 # Registry-based plugin installation with GitHub and npm support
