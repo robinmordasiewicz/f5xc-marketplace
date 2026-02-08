@@ -1,13 +1,12 @@
 # Contributing
 
-Thank you for your interest in contributing. This document describes the
-workflow and rules that all contributors — human and AI — must follow.
+Thank you for your interest in contributing. This document describes the workflow and rules that all contributors — human and AI — must follow.
 
 ## Workflow Overview
 
 Every change follows this path:
 
-```text
+```
 Issue → Branch → PR (linked to issue) → CI passes → Merge → Branch auto-deleted
 ```
 
