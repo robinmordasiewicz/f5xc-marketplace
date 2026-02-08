@@ -1,6 +1,7 @@
-# Troubleshooting
-
-Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
+---
+title: Troubleshooting
+description: Common issues and solutions for the F5 Distributed Cloud plugin marketplace
+---
 
 ## Installation Issues
 
@@ -19,8 +20,6 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 /plugin marketplace add robinmordasiewicz/f5xc-marketplace
 ```
 
----
-
 ### Plugin Installation Fails
 
 **Symptom:** Error during plugin installation.
@@ -33,27 +32,25 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 
 **Solutions:**
 
-=== "Check Network"
+Check network connectivity:
 
-    ```bash
-    # Verify you can reach GitHub
-    curl -I https://github.com/robinmordasiewicz/f5xc-console
-    ```
+```bash
+# Verify you can reach GitHub
+curl -I https://github.com/robinmordasiewicz/f5xc-console
+```
 
-=== "Direct Install"
+Try direct installation:
 
-    ```bash
-    # Try direct installation instead of marketplace
-    /plugin install robinmordasiewicz/f5xc-console
-    ```
+```bash
+# Try direct installation instead of marketplace
+/plugin install robinmordasiewicz/f5xc-console
+```
 
-=== "Update Claude Code"
+Update Claude Code:
 
-    ```bash
-    npm update -g @anthropic-ai/claude-code
-    ```
-
----
+```bash
+npm update -g @anthropic-ai/claude-code
+```
 
 ### Commands Not Appearing
 
@@ -68,8 +65,6 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 /plugin list
 ```
 
----
-
 ## Browser Automation Issues
 
 ### Chrome Extension Not Connected
@@ -81,8 +76,6 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 1. Ensure Claude in Chrome extension is installed
 2. Check extension is enabled in Chrome
 3. Verify MCP connection in Claude Code settings
-
----
 
 ### Login Timeout
 
@@ -100,8 +93,6 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 2. Check for blocked popups in Chrome
 3. Manually complete authentication if needed
 
----
-
 ### Navigation Fails
 
 **Symptom:** `/xc:console nav` cannot find the target page.
@@ -114,10 +105,8 @@ Common issues and solutions for the F5 Distributed Cloud plugin marketplace.
 /xc:console crawl https://your-tenant.console.ves.volterra.io
 ```
 
-1. Verify you're logged into the correct tenant
-2. Check that the target exists in your namespace
-
----
+2. Verify you're logged into the correct tenant
+3. Check that the target exists in your namespace
 
 ### Session Expired
 
@@ -130,8 +119,6 @@ Re-authenticate:
 ```bash
 /xc:console login https://your-tenant.console.ves.volterra.io
 ```
-
----
 
 ## Configuration Issues
 
@@ -147,13 +134,11 @@ Re-authenticate:
 /xc:console status
 ```
 
-1. Login to correct tenant:
+2. Login to correct tenant:
 
 ```bash
 /xc:console login https://correct-tenant.console.ves.volterra.io
 ```
-
----
 
 ### Namespace Mismatch
 
@@ -166,8 +151,6 @@ Navigate to correct namespace before creating resources:
 ```bash
 /xc:console nav namespace my-namespace
 ```
-
----
 
 ## Performance Issues
 
@@ -187,8 +170,6 @@ Navigate to correct namespace before creating resources:
 2. Reduce concurrent operations
 3. Use CLI plugin for batch operations (when available)
 
----
-
 ### Memory Usage
 
 **Symptom:** Browser becomes unresponsive.
@@ -199,8 +180,6 @@ Navigate to correct namespace before creating resources:
 2. Restart Chrome periodically during long sessions
 3. Monitor Chrome memory in Task Manager
 
----
-
 ## Getting More Help
 
 ### Gather Diagnostic Information
@@ -209,15 +188,15 @@ When reporting issues, include:
 
 1. **Claude Code Version:**
 
-   ```bash
-   claude --version
-   ```
+```bash
+claude --version
+```
 
 2. **Plugin Version:**
 
-   ```bash
-   /plugin list
-   ```
+```bash
+/plugin list
+```
 
 3. **Chrome Version:** Check `chrome://version`
 
@@ -239,27 +218,41 @@ When reporting issues, include:
 
 ## FAQ
 
-??? question "Can I use this with multiple F5 XC tenants?"
+<details>
+<summary>Can I use this with multiple F5 XC tenants?</summary>
 
-    Yes, you can switch between tenants by logging in to different URLs:
-    ```bash
-    /xc:console login https://tenant1.console.ves.volterra.io
-    # ... work on tenant 1 ...
-    /xc:console login https://tenant2.console.ves.volterra.io
-    # ... work on tenant 2 ...
-    ```
+Yes, you can switch between tenants by logging in to different URLs:
 
-??? question "Are my credentials stored?"
+```bash
+/xc:console login https://tenant1.console.ves.volterra.io
+# ... work on tenant 1 ...
+/xc:console login https://tenant2.console.ves.volterra.io
+# ... work on tenant 2 ...
+```
 
-    No credentials are stored by the plugins. Authentication is handled through Azure AD SSO with session cookies managed by Chrome.
+</details>
 
-??? question "Can I automate without browser?"
+<details>
+<summary>Are my credentials stored?</summary>
 
-    The `f5xc-cli` and `f5xc-api` plugins (planned) will provide headless automation. See the [Roadmap](roadmap.md) for availability.
+No credentials are stored by the plugins. Authentication is handled through Azure AD SSO with session cookies managed by Chrome.
 
-??? question "How do I update plugins?"
+</details>
 
-    ```bash
-    /plugin update f5xc-console
-    ```
-    Or reinstall to get the latest version.
+<details>
+<summary>Can I automate without browser?</summary>
+
+The `f5xc-cli` and `f5xc-api` plugins (planned) will provide headless automation. See the [Roadmap](../roadmap/) for availability.
+
+</details>
+
+<details>
+<summary>How do I update plugins?</summary>
+
+```bash
+/plugin update f5xc-console
+```
+
+Or reinstall to get the latest version.
+
+</details>

@@ -1,4 +1,7 @@
-# Getting Started
+---
+title: Getting Started
+description: Install and configure F5 Distributed Cloud plugins for Claude Code
+---
 
 This guide walks you through installing and using plugins from the F5 Distributed Cloud marketplace.
 
@@ -28,17 +31,17 @@ For browser automation plugins (like `f5xc-console`), you need the Claude in Chr
 
 Add this marketplace to your Claude Code installation:
 
-=== "Interactive"
+**Interactive:**
 
-    ```
-    /plugin marketplace add robinmordasiewicz/f5xc-marketplace
-    ```
+```text
+/plugin marketplace add robinmordasiewicz/f5xc-marketplace
+```
 
-=== "CLI"
+**CLI:**
 
-    ```bash
-    claude plugin marketplace add robinmordasiewicz/f5xc-marketplace
-    ```
+```bash
+claude plugin marketplace add robinmordasiewicz/f5xc-marketplace
+```
 
 Verify the marketplace is added:
 
@@ -58,17 +61,17 @@ This shows all plugins from configured marketplaces.
 
 ### Install a Specific Plugin
 
-=== "From Marketplace"
+**From Marketplace:**
 
-    ```
-    /plugin install f5xc-console
-    ```
+```text
+/plugin install f5xc-console
+```
 
-=== "Direct from GitHub"
+**Direct from GitHub:**
 
-    ```
-    /plugin install robinmordasiewicz/f5xc-console
-    ```
+```text
+/plugin install robinmordasiewicz/f5xc-console
+```
 
 ### Verify Installation
 
@@ -116,8 +119,9 @@ Guides you through creating an HTTP Load Balancer.
 
 ### Authentication
 
-!!! warning "Credential Security"
-    Never hardcode credentials in scripts. Use Azure AD SSO for authentication.
+:::caution[Credential Security]
+Never hardcode credentials in scripts. Use Azure AD SSO for authentication.
+:::
 
 ### Session Management
 
@@ -137,6 +141,6 @@ If a command fails:
 
 ## Next Steps
 
-- Explore [Plugin Documentation](plugins/index.md)
-- Check the [Roadmap](roadmap.md) for upcoming features
-- Learn how to [Contribute](contributing.md)
+- Explore [Plugin Documentation](plugins/)
+- Check the [Roadmap](roadmap/) for upcoming features
+- Learn how to [Contribute](contributing/)

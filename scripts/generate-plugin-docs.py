@@ -329,10 +329,10 @@ def _build_component_badges(plugin: ProcessedPlugin) -> list[str]:
         List of component badge strings.
     """
     component_map = {
-        "commands": ":material-console: Commands",
-        "skills": ":material-puzzle: Skills",
-        "agents": ":material-robot: Agents",
-        "mcpServers": ":material-server: MCP Servers",
+        "commands": "Commands:",
+        "skills": "Skills:",
+        "agents": "Agents:",
+        "mcpServers": "MCP Servers:",
     }
     return [badge for key, badge in component_map.items() if key in plugin]
 
@@ -378,11 +378,11 @@ def _build_links_section(
     """
     lines = ["## Links", ""]
     if repo_url:
-        lines.append(f"- :material-github: [Source Repository]({repo_url})")
+        lines.append(f"- [Source Repository]({repo_url})")
     if author_url:
-        lines.append(f"- :material-account: [Author: {author_name}]({author_url})")
+        lines.append(f"- [Author: {author_name}]({author_url})")
     elif author_name and author_name != "Unknown":
-        lines.append(f"- :material-account: Author: {author_name}")
+        lines.append(f"- Author: {author_name}")
     return lines
 
 
@@ -513,7 +513,7 @@ def generate_index_page(plugins: list[ProcessedPlugin], marketplace: Marketplace
         if len(description) > max_desc_len:
             description = description[: max_desc_len - 3] + "..."
 
-        lines.append(f"| [{name}]({name}.md) | {version} | {category} | {description} |")
+        lines.append(f"| [{name}]({name}/) | {version} | {category} | {description} |")
 
     lines.extend(
         [
@@ -549,7 +549,7 @@ def generate_index_page(plugins: list[ProcessedPlugin], marketplace: Marketplace
             max_cat_desc_len = 80
             if len(plugin_desc) > max_cat_desc_len:
                 plugin_desc = plugin_desc[: max_cat_desc_len - 3] + "..."
-            lines.append(f"- [{plugin_name}]({plugin_name}.md) - {plugin_desc}")
+            lines.append(f"- [{plugin_name}]({plugin_name}/) - {plugin_desc}")
         lines.append("")
 
     # Timestamp
@@ -656,7 +656,7 @@ def main() -> int:
 
         # Generate plugin page
         plugin_content = generate_plugin_page(merged)
-        plugin_file = DOCS_OUTPUT_DIR / f"{name}.md"
+        plugin_file = DOCS_OUTPUT_DIR / f"{name}.mdx"
 
         logger.info("  Writing %s...", plugin_file)
         plugin_file.write_text(plugin_content, encoding="utf-8")
@@ -670,7 +670,7 @@ def main() -> int:
     # Generate index page
     logger.info("Generating plugin index...")
     index_content = generate_index_page(processed_plugins, marketplace)
-    index_file = DOCS_OUTPUT_DIR / "index.md"
+    index_file = DOCS_OUTPUT_DIR / "index.mdx"
     index_file.write_text(index_content, encoding="utf-8")
 
     logger.info(
@@ -680,7 +680,7 @@ def main() -> int:
     )
 
     # List generated files
-    for f in sorted(DOCS_OUTPUT_DIR.glob("*.md")):
+    for f in sorted(DOCS_OUTPUT_DIR.glob("*.mdx")):
         logger.info("  - %s", f)
 
     # Report validation errors
