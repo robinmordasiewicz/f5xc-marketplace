@@ -1,31 +1,7 @@
-# Generated documentation (built at deploy time)
-docs/plugins/*.mdx
-!docs/plugins/.gitkeep
-
-# MkDocs build output
-site/
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-.env
-.venv
-env/
-venv/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
 .DS_Store
-Thumbs.db
-
-# Local development
-*.local
-.cache/
+node_modules/
+dist/
+.env
+.env.*
+*.log
+.astro/

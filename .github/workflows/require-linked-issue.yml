@@ -17,8 +17,7 @@ jobs:
         with:
           exclude-branches: "dependabot/**"
           custom-message: >-
-            This PR must be linked to a GitHub issue.
-            Use 'Closes #123' in the PR description,
-            or link an issue from the sidebar.
+            This PR must be linked to a GitHub issue. Use 'Closes #123'
+            in the PR description, or link an issue from the sidebar.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
