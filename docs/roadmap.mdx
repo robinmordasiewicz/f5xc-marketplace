@@ -1,7 +1,9 @@
-# Roadmap
+---
+title: Roadmap
+description: Planned development of F5 Distributed Cloud plugins and upcoming features
+---
 
-This roadmap outlines the planned development of F5 Distributed Cloud plugins.
-Priorities may shift based on community feedback and contributions.
+This roadmap outlines the planned development of F5 Distributed Cloud plugins. Priorities may shift based on community feedback and contributions.
 
 ## Current Status
 
@@ -21,10 +23,10 @@ Command-line interface plugin for scripted operations.
 
 **Planned Features:**
 
-- [ ] Resource listing and querying
-- [ ] Configuration export/import
-- [ ] Batch operations
-- [ ] Output formatting (JSON, YAML, table)
+- Resource listing and querying
+- Configuration export/import
+- Batch operations
+- Output formatting (JSON, YAML, table)
 
 **Use Cases:**
 
@@ -36,18 +38,16 @@ Command-line interface plugin for scripted operations.
 /xc:cli export http-lb my-lb --format yaml
 ```
 
----
-
 #### f5xc-terraform
 
 Infrastructure as Code integration with Terraform.
 
 **Planned Features:**
 
-- [ ] Terraform resource generation
-- [ ] State file integration
-- [ ] Drift detection
-- [ ] Module templates
+- Terraform resource generation
+- State file integration
+- Drift detection
+- Module templates
 
 **Use Cases:**
 
@@ -59,8 +59,6 @@ Infrastructure as Code integration with Terraform.
 /xc:tf validate ./infrastructure/
 ```
 
----
-
 ### Q2 2025
 
 #### f5xc-docs
@@ -69,10 +67,10 @@ Documentation and API reference lookup.
 
 **Planned Features:**
 
-- [ ] Inline documentation lookup
-- [ ] API reference integration
-- [ ] Example code generation
-- [ ] Best practices suggestions
+- Inline documentation lookup
+- API reference integration
+- Example code generation
+- Best practices suggestions
 
 **Use Cases:**
 
@@ -84,18 +82,16 @@ Documentation and API reference lookup.
 /xc:docs api origin-pool create
 ```
 
----
-
 #### f5xc-api
 
 Direct API access for advanced automation.
 
 **Planned Features:**
 
-- [ ] REST API client
-- [ ] GraphQL support
-- [ ] Token management
-- [ ] Rate limiting
+- REST API client
+- GraphQL support
+- Token management
+- Rate limiting
 
 **Use Cases:**
 
@@ -106,8 +102,6 @@ Direct API access for advanced automation.
 # Create via API
 /xc:api POST /config/http_loadbalancers --data @config.json
 ```
-
----
 
 ### Future Considerations
 
@@ -145,9 +139,8 @@ Have an idea for a new plugin or feature? We'd love to hear it!
 
 ## Contributing
 
-Want to help build these plugins? See our [Contributing Guide](contributing.md) to get started.
+Want to help build these plugins? See our [Contributing Guide](contributing/) to get started.
 
 ## Version History
 
-See the [Changelog](https://github.com/robinmordasiewicz/f5xc-marketplace/blob/main/CHANGELOG.md)
-for detailed release notes.
+See the [Changelog](https://github.com/robinmordasiewicz/f5xc-marketplace/blob/main/CHANGELOG.md) for detailed release notes.

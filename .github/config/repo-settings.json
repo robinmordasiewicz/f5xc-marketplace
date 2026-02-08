@@ -1,0 +1,7 @@
+{
+  "repository": {
+    "description": "F5 Distributed Cloud automation plugins for Claude Code",
+    "homepage": "https://robinmordasiewicz.github.io/f5xc-marketplace/"
+  },
+  "topics": ["f5xc", "marketplace", "plugins"]
+}

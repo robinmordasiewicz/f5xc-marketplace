@@ -1,7 +1,9 @@
-# Contributing
+---
+title: Contributing
+description: How to contribute plugins, improvements, and documentation to the F5 XC marketplace
+---
 
-We welcome contributions to the F5 Distributed Cloud plugin marketplace!
-This guide explains how to add plugins, improve existing ones, or enhance the marketplace.
+We welcome contributions to the F5 Distributed Cloud plugin marketplace! This guide explains how to add plugins, improve existing ones, or enhance the marketplace.
 
 ## Ways to Contribute
 
@@ -108,11 +110,11 @@ your-plugin/
 
 ### Quality Standards
 
-- [ ] Plugin installs without errors
-- [ ] Commands work as documented
-- [ ] Source repository is publicly accessible
-- [ ] License is clearly specified
-- [ ] Documentation is clear and complete
+- Plugin installs without errors
+- Commands work as documented
+- Source repository is publicly accessible
+- License is clearly specified
+- Documentation is clear and complete
 
 ## Commit Convention
 
@@ -143,35 +145,6 @@ git commit -m "docs: update installation instructions"
 git commit -m "feat!: redesign command interface"
 ```
 
-## Development Setup
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/robinmordasiewicz/f5xc-marketplace
-cd f5xc-marketplace
-```
-
-### Install Dependencies
-
-For documentation development:
-
-```bash
-pip install mkdocs-material mkdocs-minify-plugin
-```
-
-### Local Documentation Preview
-
-```bash
-# Generate plugin docs
-python scripts/generate-plugin-docs.py
-
-# Serve locally
-mkdocs serve
-```
-
-Visit `http://localhost:8000` to preview.
-
 ## Validation
 
 Before submitting, ensure your changes pass validation:
@@ -193,8 +166,8 @@ python scripts/generate-plugin-docs.py
 
 ## Getting Help
 
-- :material-github: [Open an Issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
-- :material-message: Start a Discussion
+- [Open an Issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
+- Start a Discussion
 
 ## License
 
