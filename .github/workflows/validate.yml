@@ -212,4 +212,3 @@ jobs:
           EOF
           echo "======================================="
           echo "✓ All validations passed"
-
