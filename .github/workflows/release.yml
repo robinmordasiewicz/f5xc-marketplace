@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pull-requests: write
@@ -144,6 +148,9 @@ jobs:
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Delete stale release branch if it exists from a previous failed run
+          git push origin --delete "$BRANCH_NAME" 2>/dev/null || true
 
           # Create release branch
           git checkout -b "$BRANCH_NAME"
