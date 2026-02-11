@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [3.5.9] - 2026-02-11
+
+### Changed
+
+- bump actions/checkout from 4 to 6 (#94)
+
 ## [3.5.8] - 2026-02-11
 
 ### Fixed
