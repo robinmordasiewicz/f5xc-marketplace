@@ -1,11 +1,11 @@
 ---
 title: Troubleshooting
-description: Common issues and solutions for the F5 Distributed Cloud plugin marketplace
+description: Common issues and solutions for the Cloud plugin marketplace
 ---
 
-## Installation Issues
+## Installation issues
 
-### Marketplace Not Found
+### Marketplace not found
 
 **Symptom:** Error when trying to install plugins from the marketplace.
 
@@ -20,29 +20,23 @@ description: Common issues and solutions for the F5 Distributed Cloud plugin mar
 /plugin marketplace add robinmordasiewicz/f5xc-marketplace
 ```
 
-### Plugin Installation Fails
+### Plugin installation fails
 
 **Symptom:** Error during plugin installation.
 
-**Possible Causes:**
+**Cause:** Network connectivity issues, inaccessible plugin repository, or outdated Claude Code version.
 
-1. Network connectivity issues
-2. Plugin repository not accessible
-3. Outdated Claude Code version
-
-**Solutions:**
+**Solution:**
 
 Check network connectivity:
 
 ```bash
-# Verify you can reach GitHub
 curl -I https://github.com/robinmordasiewicz/f5xc-console
 ```
 
 Try direct installation:
 
 ```bash
-# Try direct installation instead of marketplace
 /plugin install robinmordasiewicz/f5xc-console
 ```
 
@@ -52,65 +46,61 @@ Update Claude Code:
 npm update -g @anthropic-ai/claude-code
 ```
 
-### Commands Not Appearing
+### Commands not appearing
 
 **Symptom:** Plugin installed but commands not available.
 
 **Solution:**
 
 1. Restart Claude Code after plugin installation
-2. Verify plugin is enabled:
+2. Verify the plugin is enabled:
 
 ```bash
 /plugin list
 ```
 
-## Browser Automation Issues
+## Browser automation issues
 
-### Chrome Extension Not Connected
+### Chrome extension not connected
 
 **Symptom:** Browser commands fail with connection errors.
 
-**Solutions:**
+**Solution:**
 
-1. Ensure Claude in Chrome extension is installed
-2. Check extension is enabled in Chrome
+1. Verify the Claude in Chrome extension is installed
+2. Check the extension is enabled in Chrome
 3. Verify MCP connection in Claude Code settings
 
-### Login Timeout
+### Login timeout
 
 **Symptom:** `/xc:console login` times out before completing authentication.
 
-**Possible Causes:**
+**Cause:** Slow network connection, Azure AD authentication delays, or blocked browser popup.
 
-- Slow network connection
-- Azure AD authentication delays
-- Browser popup blocked
-
-**Solutions:**
+**Solution:**
 
 1. Increase timeout in plugin settings
 2. Check for blocked popups in Chrome
 3. Manually complete authentication if needed
 
-### Navigation Fails
+### Navigation fails
 
 **Symptom:** `/xc:console nav` cannot find the target page.
 
-**Solutions:**
+**Solution:**
 
 1. Run crawl to update navigation metadata:
 
-```bash
-/xc:console crawl https://your-tenant.console.ves.volterra.io
-```
+    ```bash
+    /xc:console crawl https://your-tenant.console.ves.volterra.io
+    ```
 
-2. Verify you're logged into the correct tenant
+2. Verify you are logged into the correct tenant
 3. Check that the target exists in your namespace
 
-### Session Expired
+### Session expired
 
-**Symptom:** Commands fail after period of inactivity.
+**Symptom:** Commands fail after a period of inactivity.
 
 **Solution:**
 
@@ -120,108 +110,103 @@ Re-authenticate:
 /xc:console login https://your-tenant.console.ves.volterra.io
 ```
 
-## Configuration Issues
+## Configuration issues
 
-### Wrong Tenant
+### Wrong tenant
 
 **Symptom:** Commands affect unexpected resources.
 
 **Solution:**
 
-1. Verify current session:
+1. Verify the current session:
 
-```bash
-/xc:console status
-```
+    ```bash
+    /xc:console status
+    ```
 
-2. Login to correct tenant:
+2. Log in to the correct tenant:
 
-```bash
-/xc:console login https://correct-tenant.console.ves.volterra.io
-```
+    ```bash
+    /xc:console login https://correct-tenant.console.ves.volterra.io
+    ```
 
-### Namespace Mismatch
+### Namespace mismatch
 
 **Symptom:** Resources not found or created in wrong namespace.
 
 **Solution:**
 
-Navigate to correct namespace before creating resources:
+Navigate to the correct namespace before creating resources:
 
 ```bash
 /xc:console nav namespace my-namespace
 ```
 
-## Performance Issues
+## Performance issues
 
-### Slow Command Execution
+### Slow command execution
 
 **Symptom:** Commands take longer than expected.
 
-**Possible Causes:**
+**Cause:** Large DOM in the console, network latency, or complex page rendering.
 
-- Large DOM in console
-- Network latency
-- Complex page rendering
+**Solution:**
 
-**Solutions:**
-
-1. Wait for page to fully load
+1. Wait for the page to fully load
 2. Reduce concurrent operations
-3. Use CLI plugin for batch operations (when available)
+3. Use the CLI plugin for batch operations (when available)
 
-### Memory Usage
+### Memory usage
 
 **Symptom:** Browser becomes unresponsive.
 
-**Solutions:**
+**Solution:**
 
 1. Close unnecessary browser tabs
 2. Restart Chrome periodically during long sessions
 3. Monitor Chrome memory in Task Manager
 
-## Getting More Help
+## Getting more help
 
-### Gather Diagnostic Information
+### Gather diagnostic information
 
 When reporting issues, include:
 
-1. **Claude Code Version:**
+1. **Claude Code version:**
 
-```bash
-claude --version
-```
+    ```bash
+    claude --version
+    ```
 
-2. **Plugin Version:**
+2. **Plugin version:**
 
-```bash
-/plugin list
-```
+    ```bash
+    /plugin list
+    ```
 
-3. **Chrome Version:** Check `chrome://version`
+3. **Chrome version:** Check `chrome://version`
 
-4. **Error Messages:** Full error text or screenshot
+4. **Error messages:** Full error text or screenshot
 
-5. **Steps to Reproduce:** What commands led to the issue
+5. **Steps to reproduce:** Commands that led to the issue
 
-### Report an Issue
+### Report an issue
 
 1. Search [existing issues](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
 2. If not found, [create a new issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues/new)
 3. Use the bug report template
 4. Include diagnostic information
 
-### Community Support
+### Community support
 
 - GitHub Discussions (coming soon)
 - Stack Overflow tag: `f5-distributed-cloud`
 
-## FAQ
+## Frequently asked questions
 
-<details>
-<summary>Can I use this with multiple F5 XC tenants?</summary>
+### Can I use this with multiple tenants?
 
-Yes, you can switch between tenants by logging in to different URLs:
+Yes. Switch between tenants by logging in to different URLs:
 
 ```bash
 /xc:console login https://tenant1.console.ves.volterra.io
@@ -230,29 +215,19 @@ Yes, you can switch between tenants by logging in to different URLs:
 # ... work on tenant 2 ...
 ```
 
-</details>
+### Are my credentials stored?
 
-<details>
-<summary>Are my credentials stored?</summary>
+No credentials are stored by the plugins. Authentication is handled through
+Azure AD SSO with session cookies managed by Chrome.
 
-No credentials are stored by the plugins. Authentication is handled through Azure AD SSO with session cookies managed by Chrome.
+### Can I automate without a browser?
 
-</details>
+The `f5xc-cli` and `f5xc-api` plugins (planned) provide headless automation. See the [Roadmap](roadmap/) for availability.
 
-<details>
-<summary>Can I automate without browser?</summary>
-
-The `f5xc-cli` and `f5xc-api` plugins (planned) will provide headless automation. See the [Roadmap](../roadmap/) for availability.
-
-</details>
-
-<details>
-<summary>How do I update plugins?</summary>
+### How do I update plugins?
 
 ```bash
 /plugin update f5xc-console
 ```
 
 Or reinstall to get the latest version.
-
-</details>

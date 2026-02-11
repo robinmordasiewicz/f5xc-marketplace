@@ -1,29 +1,19 @@
 ---
 title: Contributing
-description: How to contribute plugins, improvements, and documentation to the F5 XC marketplace
+description: How to contribute plugins and improvements to the marketplace
 ---
 
-We welcome contributions to the F5 Distributed Cloud plugin marketplace! This guide explains how to add plugins, improve existing ones, or enhance the marketplace.
+Contributions to the Cloud plugin marketplace are welcome. This guide covers
+plugin-specific requirements. For the full governance workflow (issues, branches,
+PRs, and merge rules), see
+[CONTRIBUTING.md](https://github.com/robinmordasiewicz/f5xc-marketplace/blob/main/CONTRIBUTING.md)
+in the repository root.
 
-## Ways to Contribute
+## Adding a plugin
 
-### 1. Add a New Plugin
+### Create the plugin
 
-Create and publish your own F5 XC automation plugin.
-
-### 2. Improve Existing Plugins
-
-Submit bug fixes, features, or documentation improvements.
-
-### 3. Enhance the Marketplace
-
-Improve validation, automation, or documentation.
-
-## Adding a Plugin to the Marketplace
-
-### Step 1: Create Your Plugin
-
-Your plugin repository must have a valid `.claude-plugin/plugin.json`:
+Every plugin repository must contain a valid `.claude-plugin/plugin.json`:
 
 ```json
 {
@@ -42,16 +32,9 @@ Your plugin repository must have a valid `.claude-plugin/plugin.json`:
 }
 ```
 
-### Step 2: Fork the Marketplace
+### Add a marketplace entry
 
-```bash
-git clone https://github.com/robinmordasiewicz/f5xc-marketplace
-cd f5xc-marketplace
-```
-
-### Step 3: Add Your Plugin Entry
-
-Edit `.claude-plugin/marketplace.json`:
+Edit `.claude-plugin/marketplace.json` to register the plugin:
 
 ```json
 {
@@ -75,16 +58,9 @@ Edit `.claude-plugin/marketplace.json`:
 }
 ```
 
-### Step 4: Submit a Pull Request
+## Plugin requirements
 
-1. Create a feature branch
-2. Commit your changes
-3. Push to your fork
-4. Open a Pull Request
-
-## Plugin Requirements
-
-### Required Files
+### Required files
 
 | File | Description |
 |------|-------------|
@@ -92,7 +68,7 @@ Edit `.claude-plugin/marketplace.json`:
 | `README.md` | Plugin documentation |
 | `LICENSE` | Open source license |
 
-### Recommended Structure
+### Recommended directory structure
 
 ```text
 your-plugin/
@@ -108,7 +84,7 @@ your-plugin/
 └── CHANGELOG.md
 ```
 
-### Quality Standards
+### Quality standards
 
 - Plugin installs without errors
 - Commands work as documented
@@ -116,11 +92,11 @@ your-plugin/
 - License is clearly specified
 - Documentation is clear and complete
 
-## Commit Convention
+## Commit convention
 
 This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 
-| Type | Description | Version Bump |
+| Type | Description | Version bump |
 |------|-------------|--------------|
 | `feat:` | New features | Minor |
 | `fix:` | Bug fixes | Patch |
@@ -129,25 +105,9 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 | `refactor:` | Code restructuring | None |
 | `test:` | Testing | None |
 
-### Examples
-
-```bash
-# New feature
-git commit -m "feat: add support for origin pool creation"
-
-# Bug fix
-git commit -m "fix: resolve authentication timeout issue"
-
-# Documentation
-git commit -m "docs: update installation instructions"
-
-# Breaking change
-git commit -m "feat!: redesign command interface"
-```
-
 ## Validation
 
-Before submitting, ensure your changes pass validation:
+Before submitting, verify changes pass validation:
 
 ```bash
 # Validate marketplace.json syntax
@@ -157,18 +117,18 @@ python -m json.tool .claude-plugin/marketplace.json
 python scripts/generate-plugin-docs.py
 ```
 
-## Code of Conduct
+## Code of conduct
 
 - Be respectful and inclusive
 - Provide constructive feedback
 - Help others learn and grow
-- Focus on the technical merits
+- Focus on technical merits
 
-## Getting Help
+## Getting help
 
-- [Open an Issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
-- Start a Discussion
+- [Open an issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
+- Start a discussion
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing, you agree that your contributions are licensed under the MIT License.

@@ -1,34 +1,30 @@
 ---
 title: Roadmap
-description: Planned development of F5 Distributed Cloud plugins and upcoming features
+description: Planned development of Cloud plugins and upcoming features
 ---
 
-This roadmap outlines the planned development of F5 Distributed Cloud plugins. Priorities may shift based on community feedback and contributions.
+This roadmap outlines planned development of Cloud plugins. Priorities may shift based on community feedback and contributions.
 
-## Current Status
-
-### Available Now
+## Current status
 
 | Plugin | Version | Description |
 |--------|---------|-------------|
-| f5xc-console | 0.10.1 | Browser automation for F5 XC console |
+| f5xc-console | 0.10.1 | Browser automation for console |
 
-## Planned Plugins
+## Planned plugins
 
-### Q1 2025
-
-#### f5xc-cli
+### f5xc-cli
 
 Command-line interface plugin for scripted operations.
 
-**Planned Features:**
+**Planned features:**
 
 - Resource listing and querying
 - Configuration export/import
 - Batch operations
 - Output formatting (JSON, YAML, table)
 
-**Use Cases:**
+**Use cases:**
 
 ```bash
 # List all HTTP load balancers
@@ -38,18 +34,18 @@ Command-line interface plugin for scripted operations.
 /xc:cli export http-lb my-lb --format yaml
 ```
 
-#### f5xc-terraform
+### f5xc-terraform
 
 Infrastructure as Code integration with Terraform.
 
-**Planned Features:**
+**Planned features:**
 
 - Terraform resource generation
 - State file integration
 - Drift detection
 - Module templates
 
-**Use Cases:**
+**Use cases:**
 
 ```bash
 # Generate Terraform for existing resources
@@ -59,41 +55,33 @@ Infrastructure as Code integration with Terraform.
 /xc:tf validate ./infrastructure/
 ```
 
-### Q2 2025
+## Under consideration
 
-#### f5xc-docs
+### f5xc-docs
 
 Documentation and API reference lookup.
-
-**Planned Features:**
 
 - Inline documentation lookup
 - API reference integration
 - Example code generation
 - Best practices suggestions
 
-**Use Cases:**
-
 ```bash
-# Lookup documentation
+# Look up documentation
 /xc:docs http-lb configuration
 
 # Get API examples
 /xc:docs api origin-pool create
 ```
 
-#### f5xc-api
+### f5xc-api
 
 Direct API access for advanced automation.
-
-**Planned Features:**
 
 - REST API client
 - GraphQL support
 - Token management
 - Rate limiting
-
-**Use Cases:**
 
 ```bash
 # Direct API call
@@ -103,9 +91,7 @@ Direct API access for advanced automation.
 /xc:api POST /config/http_loadbalancers --data @config.json
 ```
 
-### Future Considerations
-
-#### f5xc-monitor
+### f5xc-monitor
 
 Monitoring and alerting integration.
 
@@ -113,7 +99,7 @@ Monitoring and alerting integration.
 - Alert threshold configuration
 - Dashboard generation
 
-#### f5xc-security
+### f5xc-security
 
 Security assessment and hardening.
 
@@ -121,7 +107,7 @@ Security assessment and hardening.
 - Security posture assessment
 - Compliance checking
 
-#### f5xc-migrate
+### f5xc-migrate
 
 Migration tooling for onboarding.
 
@@ -129,9 +115,9 @@ Migration tooling for onboarding.
 - DNS migration assistance
 - Traffic cutover planning
 
-## Feature Requests
+## Feature requests
 
-Have an idea for a new plugin or feature? We'd love to hear it!
+Have an idea for a new plugin or feature?
 
 1. Check [existing issues](https://github.com/robinmordasiewicz/f5xc-marketplace/issues) for similar requests
 2. [Open a new issue](https://github.com/robinmordasiewicz/f5xc-marketplace/issues/new) with your proposal
@@ -139,8 +125,8 @@ Have an idea for a new plugin or feature? We'd love to hear it!
 
 ## Contributing
 
-Want to help build these plugins? See our [Contributing Guide](contributing/) to get started.
+Want to help build these plugins? See the [Contributing Guide](contributing/) to get started.
 
-## Version History
+## Version history
 
 See the [Changelog](https://github.com/robinmordasiewicz/f5xc-marketplace/blob/main/CHANGELOG.md) for detailed release notes.

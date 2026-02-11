@@ -5,18 +5,19 @@ description: How plugins are automatically synchronized from npm registry to the
 
 ## Overview
 
-When a plugin repository (e.g., `f5xc-console`) publishes a new release to npm, it can trigger a webhook to notify this marketplace. The marketplace then:
+When a plugin repository (e.g., `f5xc-console`) publishes a new release to npm,
+it triggers a webhook to notify this marketplace. The marketplace then:
 
-1. Fetches the latest version metadata from npm registry
+1. Fetches the latest version metadata from the npm registry
 2. Updates `plugins.json` with the new version
-3. Commits the changes to trigger documentation rebuild
+3. Commits the changes to trigger a documentation rebuild
 4. Deploys updated documentation to GitHub Pages
 
-## Webhook Dispatch Setup
+## Webhook dispatch setup
 
-### For Plugin Repositories
+### For plugin repositories
 
-To enable automatic sync when your plugin publishes a new release, add this step to your release workflow:
+To enable automatic sync when a plugin publishes a new release, add this step to the release workflow:
 
 ```yaml
 # In your plugin's .github/workflows/release.yml
@@ -36,24 +37,28 @@ To enable automatic sync when your plugin publishes a new release, add this step
       }
 ```
 
-### Required Secrets
+### Required secrets
 
-The plugin repository needs a Personal Access Token (PAT) with `repo` scope that has write access to the marketplace repository:
+:::caution[Token security]
+Store tokens as repository secrets only. Never commit tokens to source control or share them in plain text.
+:::
 
-1. Create a PAT at https://github.com/settings/tokens
+The plugin repository needs a Personal Access Token (PAT) with `repo` scope and write access to the marketplace repository:
+
+1. Create a PAT at <https://github.com/settings/tokens>
 2. Grant `repo` scope (for repository dispatch)
-3. Add as secret `MARKETPLACE_DISPATCH_TOKEN` in your plugin repository
+3. Add as secret `MARKETPLACE_DISPATCH_TOKEN` in the plugin repository
 
-### Alternative: Fine-grained Token
+### Alternative: fine-grained token
 
-For better security, use a fine-grained PAT:
+For tighter scoping, use a fine-grained PAT:
 
-1. Create at https://github.com/settings/personal-access-tokens
+1. Create at <https://github.com/settings/personal-access-tokens>
 2. Repository access: Select `robinmordasiewicz/f5xc-marketplace`
 3. Permissions: Contents (read/write)
-4. Add as secret in your plugin repository
+4. Add as secret in the plugin repository
 
-## Sync Triggers
+## Sync triggers
 
 The marketplace syncs plugins in three ways:
 
@@ -63,7 +68,7 @@ The marketplace syncs plugins in three ways:
 | `workflow_dispatch` | Manual trigger from GitHub Actions UI |
 | `schedule` | Every 6 hours as fallback |
 
-## Manual Sync
+## Manual sync
 
 To manually trigger a sync:
 
@@ -72,7 +77,7 @@ To manually trigger a sync:
 3. Select plugin to sync (or "all")
 4. Click "Run workflow"
 
-## Local Testing
+## Local testing
 
 Test the sync script locally:
 
@@ -87,7 +92,7 @@ Test the sync script locally:
 ./scripts/plugin-manager.sh npm-info f5xc-console
 ```
 
-## Workflow Files
+## Workflow files
 
 | File | Purpose |
 |------|---------|
@@ -95,7 +100,7 @@ Test the sync script locally:
 | `scripts/sync-npm-plugins.sh` | Fetches npm metadata and updates files |
 | `scripts/plugin-manager.sh` | CLI for manual plugin management |
 
-## Payload Format
+## Payload format
 
 The webhook dispatch expects this payload format:
 

@@ -67,17 +67,18 @@ repos:
         args: [--config, .markdownlint-cli2.jsonc, --fix]
 
   # ==============================================================
-  # STEP 6: MkDocs build validation
+  # STEP 6: MkDocs build validation (DISABLED - using Astro/Starlight)
   # ==============================================================
-  - repo: local
-    hooks:
-      - id: mkdocs-build
-        name: Build documentation (strict mode)
-        entry: bash -c 'pip install -q mkdocs-material mkdocs-minify-plugin && mkdocs build --strict'
-        language: system
-        pass_filenames: false
-        always_run: true
-        stages: [pre-commit]
+  # Note: Project uses Astro Starlight for documentation, not MkDocs
+  # - repo: local
+  #   hooks:
+  #     - id: mkdocs-build
+  #       name: Build documentation (strict mode)
+  #       entry: bash -c 'pip install -q mkdocs-material mkdocs-minify-plugin && mkdocs build --strict'
+  #       language: system
+  #       pass_filenames: false
+  #       always_run: true
+  #       stages: [pre-commit]
 
   # ==============================================================
   # STEP 7: General file hygiene
