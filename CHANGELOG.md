@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [3.5.4] - 2026-02-11
+
+### Changed
+
+- sync .gitignore (#85)
+
 ## [3.5.3] - 2026-02-11
 
 ### Changed
