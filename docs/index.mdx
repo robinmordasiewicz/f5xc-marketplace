@@ -1,30 +1,26 @@
 ---
-title: F5 Distributed Cloud Plugin Marketplace
-description: Automate F5 XC operations with Claude Code plugins for intelligent browser automation and enterprise-grade security
-template: splash
-sidebar:
-  hidden: true
+title: Cloud Plugin Marketplace
+description: Automate operations with Claude Code plugins for intelligent browser automation and enterprise-grade security
 hero:
-  tagline: Automate F5 XC operations with Claude Code. Intelligent browser automation, natural language commands, and enterprise-grade security for network engineers and DevOps teams.
-  actions:
-    - text: Get Started
-      link: getting-started/
-      icon: right-arrow
-      variant: primary
+  tagline: Automate operations with Claude Code. Intelligent browser automation, natural language commands, and enterprise-grade security for network engineers and DevOps teams.
 ---
 
 ## Key Features
 
-- **Automation First** — Automate repetitive F5 XC console tasks with intelligent browser automation powered by Claude's understanding of your intent.
-- **AI-Powered Intelligence** — Natural language commands translate to precise console actions. Just describe what you want, and Claude handles the details.
-- **Enterprise Security** — Built for enterprise environments with Azure AD SSO, multi-tenant support, and secure authentication flows.
-- **Open Source** — MIT licensed and community-driven. Contribute workflows, report issues, and help shape the future of F5 automation.
+- **Automation first** — Automate repetitive console tasks with intelligent
+  browser automation powered by Claude's understanding of intent.
+- **AI-powered intelligence** — Translate natural language commands to precise
+  console actions. Describe what you want, and Claude handles the details.
+- **Enterprise security** — Deploy in enterprise environments with Azure AD SSO,
+  multi-tenant support, and secure authentication flows.
+- **Open source** — Contribute workflows, report issues, and shape the future of
+  F5 automation under the MIT license.
 
 ## Available Plugins
 
 | Plugin | Description | Status |
 |--------|-------------|--------|
-| [f5xc-console](plugins/) | Browser automation for F5 XC console operations | Available |
+| [f5xc-console](plugins/) | Browser automation for console operations | Available |
 | f5xc-cli | CLI operations and scripting integration | Planned |
 | f5xc-terraform | Infrastructure as Code integration | Planned |
 | f5xc-docs | Documentation and API reference lookup | Planned |
@@ -33,19 +29,19 @@ hero:
 
 Get up and running in 60 seconds:
 
-**Step 1: Add Marketplace**
+### Step 1: Add marketplace
 
 ```bash
 /plugin marketplace add robinmordasiewicz/f5xc-marketplace
 ```
 
-**Step 2: Install Plugin**
+### Step 2: Install plugin
 
 ```bash
 /plugin install f5xc-console
 ```
 
-**Step 3: Start Automating**
+### Step 3: Start automating
 
 ```text
 You: "Navigate to the shared namespace and show me all HTTP load balancers"
@@ -61,7 +57,13 @@ Claude: Navigating to shared namespace... Found 3 HTTP load balancers...
 
 ## Getting Help
 
-- [Getting Started Guide](getting-started/) — Complete walkthrough from installation to your first automation.
+- [Getting Started Guide](getting-started/) — Complete walkthrough from installation to first automation.
 - [Troubleshooting](troubleshooting/) — Common issues and solutions for plugin and automation problems.
-- [GitHub Issues](https://github.com/robinmordasiewicz/f5xc-marketplace/issues) — Report bugs, request features, or ask questions.
-- [Roadmap](roadmap/) — See what's coming next and planned features.
+- [GitHub Issues](https://github.com/robinmordasiewicz/f5xc-marketplace/issues)
+  — Report bugs, request features, or ask questions.
+- [Roadmap](roadmap/) — Planned features and upcoming plugins.
+
+## For Developers
+
+- [Contributing](contributing/) — Add plugins, submit fixes, and improve the marketplace.
+- [Plugin Automation](plugin-automation/) — How plugin releases sync to the marketplace automatically.

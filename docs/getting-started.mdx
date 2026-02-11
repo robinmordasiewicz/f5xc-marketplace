@@ -1,9 +1,9 @@
 ---
 title: Getting Started
-description: Install and configure F5 Distributed Cloud plugins for Claude Code
+description: Install and configure Cloud plugins for Claude Code
 ---
 
-This guide walks you through installing and using plugins from the F5 Distributed Cloud marketplace.
+This guide walks through installing and using plugins from the Cloud marketplace.
 
 ## Prerequisites
 
@@ -12,28 +12,31 @@ This guide walks you through installing and using plugins from the F5 Distribute
 Claude Code is Anthropic's official CLI for AI-powered software engineering.
 
 ```bash
-# Install Claude Code
 npm install -g @anthropic-ai/claude-code
 ```
 
 Or visit [claude.com/claude-code](https://claude.com/claude-code) for installation instructions.
 
-### 2. Install Claude in Chrome Extension
+### 2. Install Claude in Chrome extension
 
-For browser automation plugins (like `f5xc-console`), you need the Claude in Chrome extension:
+For browser automation plugins (like `f5xc-console`), install the Claude in Chrome extension:
 
-1. Open Chrome Web Store
+:::tip[Chrome extension]
+
+1. Open the [Chrome Web Store](https://chromewebstore.google.com/)
 2. Search for "Claude in Chrome"
-3. Click "Add to Chrome"
-4. Grant necessary permissions
+3. Click **Add to Chrome**
+4. Grant the requested permissions
 
-## Adding the Marketplace
+:::
+
+## Adding the marketplace
 
 Add this marketplace to your Claude Code installation:
 
 **Interactive:**
 
-```text
+```bash
 /plugin marketplace add robinmordasiewicz/f5xc-marketplace
 ```
 
@@ -45,47 +48,47 @@ claude plugin marketplace add robinmordasiewicz/f5xc-marketplace
 
 Verify the marketplace is added:
 
-```text
+```bash
 /plugin marketplace list
 ```
 
-## Installing Plugins
+## Installing plugins
 
-### Browse Available Plugins
+### Browse available plugins
 
-```text
+```bash
 /plugin
 ```
 
 This shows all plugins from configured marketplaces.
 
-### Install a Specific Plugin
+### Install a specific plugin
 
-**From Marketplace:**
+**From marketplace:**
 
-```text
+```bash
 /plugin install f5xc-console
 ```
 
 **Direct from GitHub:**
 
-```text
+```bash
 /plugin install robinmordasiewicz/f5xc-console
 ```
 
-### Verify Installation
+### Verify installation
 
-```text
+```bash
 /plugin list
 ```
 
-## Using Plugins
+## Using plugins
 
-### f5xc-console Plugin
+### f5xc-console plugin
 
-The `f5xc-console` plugin provides browser automation for the F5 XC console.
+The `f5xc-console` plugin provides browser automation for the console.
 
-#### Login to F5 XC Console
+#### Log in to the console
 
 ```text
 /xc:console login https://your-tenant.console.ves.volterra.io
@@ -93,13 +96,13 @@ The `f5xc-console` plugin provides browser automation for the F5 XC console.
 
 This initiates Azure SSO authentication and logs you into the console.
 
-#### Navigate to a Workspace
+#### Navigate to a workspace
 
 ```text
 /xc:console nav "Web App & API Protection"
 ```
 
-#### Crawl Navigation Metadata
+#### Crawl navigation metadata
 
 ```text
 /xc:console crawl https://your-tenant.console.ves.volterra.io
@@ -107,7 +110,7 @@ This initiates Azure SSO authentication and logs you into the console.
 
 Extracts navigation structure for intelligent command routing.
 
-#### Create Resources
+#### Create resources
 
 ```text
 /xc:console create http-lb
@@ -115,31 +118,31 @@ Extracts navigation structure for intelligent command routing.
 
 Guides you through creating an HTTP Load Balancer.
 
-## Best Practices
+## Best practices
 
 ### Authentication
 
-:::caution[Credential Security]
+:::caution[Credential security]
 Never hardcode credentials in scripts. Use Azure AD SSO for authentication.
 :::
 
-### Session Management
+### Session management
 
 The browser automation maintains session state. For long-running operations:
 
-1. Verify you're logged in before starting
+1. Verify you are logged in before starting
 2. Handle session timeouts gracefully
-3. Use `/xc:console login` to re-authenticate if needed
+3. Run `/xc:console login` to re-authenticate if needed
 
-### Error Handling
+### Error handling
 
 If a command fails:
 
 1. Check the browser console for errors
 2. Verify network connectivity
-3. Ensure you have proper permissions in F5 XC
+3. Ensure you have proper permissions in the console namespace
 
-## Next Steps
+## Next steps
 
 - Explore [Plugin Documentation](plugins/)
 - Check the [Roadmap](roadmap/) for upcoming features
