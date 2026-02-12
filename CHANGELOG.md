@@ -20,6 +20,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [3.6.2] - 2026-02-12
+
+### Changed
+
+- sync .pre-commit-config.yaml (#139)
+
 ## [3.6.1] - 2026-02-12
 
 ### Changed
