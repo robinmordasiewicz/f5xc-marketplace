@@ -15,6 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [3.5.17] - 2026-02-12
+
+### Changed
+
+- sync CLAUDE.md (#126)
+
 ## [3.5.16] - 2026-02-12
 
 ### Changed
