@@ -23,6 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [3.8.0] - 2026-02-25
+
+### Added
+
+- update f5xc-console to v (#147)
+
 ## [3.7.0] - 2026-02-12
 
 ### Added
