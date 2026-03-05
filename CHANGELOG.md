@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [3.9.1] - 2026-03-05
+
+### Changed
+
+- sync managed files from governance template (#152)
+
 ## [3.9.0] - 2026-02-26
 
 ### Added
