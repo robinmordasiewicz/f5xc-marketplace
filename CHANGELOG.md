@@ -27,6 +27,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [3.9.3] - 2026-07-10
+
+### Changed
+
+- sync managed files from governance template (#160)
+- bump actions/checkout from 6 to 7 (#158)
+
 ## [3.9.2] - 2026-04-28
 
 ### Changed
